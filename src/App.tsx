@@ -1,6 +1,3 @@
-import { AxiosResponse } from 'axios';
-import { useState } from 'react';
-import './App.css';
 import Upload from './components/upload/Upload';
 
 function App() {
