@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 
 const Upload = () => {
 	const history = useHistory();
-	const [form, setForm] = useState<FormData>();
+	const [file, setFile] = useState<File>();
 	const [backendStatus, setBackendStatus] = useState<Boolean>(false);
 	const [message, setMessage] = useState<String>('Waiting for ML service to start');
 
@@ -24,17 +24,18 @@ const Upload = () => {
 	}, []);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		if (e.target !== null) {
-			console.log(e.target.value);
-			console.log(e.target);
-			//setForm(e.target.formTarget);
+		if (e.currentTarget.files) {
+			console.log(e.currentTarget.value);
+			console.log(e.currentTarget);
+			console.log(typeof e.currentTarget.files[0]);
+			setFile(e.currentTarget.files[0]);
 		}
 	};
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 
-		API.post('/ml', form).then((res) => {
+		API.post('/ml', file).then((res) => {
 			history.push({ pathname: '/results', state: res.data });
 		});
 	};
