@@ -5,17 +5,17 @@ import API from '../../config/API';
 //import Results from '../results/Results';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Default } from 'react-spinners-css';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Upload = () => {
-	const navigate = useNavigate();
+	const history = useHistory();
 	const [form, setForm] = useState<FormData>();
 	const [backendStatus, setBackendStatus] = useState<Boolean>(false);
 	const [response, setResponse] = useState<AxiosResponse>();
 
 	useEffect(() => {
 		API.get('/up').then((res) => {
-			setBackendStatus(res.data === "1");
+			setBackendStatus(res.data === '1');
 			console.log(res.data);
 		});
 	}, []);
@@ -32,7 +32,7 @@ const Upload = () => {
 		e.preventDefault();
 
 		API.post('/ml', form).then((res) => {
-			navigate('/results', { state: res.data });
+			history.push({ pathname: '/results', state: res.data });
 		});
 	};
 
@@ -46,7 +46,7 @@ const Upload = () => {
 					<input className='form' type='submit' />
 				</form>
 			) : (
-				<div>
+				<div className='form'>
 					<Default className='form' />
 					<p className='form'>Waiting for backend to load</p>
 				</div>
