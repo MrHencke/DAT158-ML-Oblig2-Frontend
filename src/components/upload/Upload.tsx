@@ -11,12 +11,15 @@ const Upload = () => {
 	const history = useHistory();
 	const [form, setForm] = useState<FormData>();
 	const [backendStatus, setBackendStatus] = useState<Boolean>(false);
-	const [response, setResponse] = useState<AxiosResponse>();
+	const [message, setMessage] = useState<String>('Waiting for ML service to start');
 
 	useEffect(() => {
 		API.get('/up').then((res) => {
-			setBackendStatus(res.data === 'u');
-			console.log(res.data);
+			if (res.status === 200) {
+				setBackendStatus(true);
+			} else {
+				setMessage('ML Service initialization failed. Try again later.');
+			}
 		});
 	}, []);
 
@@ -24,7 +27,7 @@ const Upload = () => {
 		if (e.target !== null) {
 			console.log(e.target.value);
 			console.log(e.target);
-			//setForm(e.target.value);
+			//setForm(e.target.formTarget);
 		}
 	};
 
@@ -48,7 +51,7 @@ const Upload = () => {
 			) : (
 				<div className='form'>
 					<Default className='form' />
-					<p className='form'>Waiting for backend to load</p>
+					<p className='form'>{`${message}`}</p>
 				</div>
 			)}
 		</div>
