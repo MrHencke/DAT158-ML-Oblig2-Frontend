@@ -3,10 +3,19 @@
 import { AxiosResponse } from 'axios';
 import API from '../../config/API';
 //import Results from '../results/Results';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { Default } from 'react-spinners-css';
 const Upload = () => {
 	const [form, setForm] = useState<FormData>();
+	const [backendStatus, setBackendStatus] = useState<Boolean>(false);
 	const [response, setResponse] = useState<AxiosResponse>();
+
+	useEffect(() => {
+		API.get('/up').then((res) => {
+			setBackendStatus(res.data === 'up');
+			console.log(res.data);
+		});
+	});
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target !== null) {
@@ -25,15 +34,20 @@ const Upload = () => {
 	};
 
 	return (
-		//TODO Create a more react-like form for upload, integrate axios request/response
-
 		<div>
-			<form className='form' onSubmit={handleSubmit} encType='multipart/form-data'>
-				<input className='form' type='file' name='file' onChange={handleChange} />
-				<div style={{ height: '3rem' }} />
+			{backendStatus ? (
+				<form className='form' onSubmit={handleSubmit} encType='multipart/form-data'>
+					<input className='form' type='file' name='file' onChange={handleChange} />
+					<div style={{ height: '3rem' }} />
 
-				<input className='form' type='submit' />
-			</form>
+					<input className='form' type='submit' />
+				</form>
+			) : (
+				<div>
+					<Default />
+					<p>Waiting for backend to load</p>
+				</div>
+			)}
 		</div>
 	);
 };
