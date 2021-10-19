@@ -18,7 +18,7 @@ const Upload = () => {
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 
-		API.post(`/api/ml`, form).then((res) => {
+		API.post('/ml', form).then((res) => {
 			console.log(res);
 			console.log(res.data);
 		});
