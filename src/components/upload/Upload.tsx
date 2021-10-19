@@ -15,7 +15,7 @@ const Upload = () => {
 
 	useEffect(() => {
 		API.get('/up').then((res) => {
-			setBackendStatus(res.data === 1);
+			setBackendStatus(res.data === "1");
 			console.log(res.data);
 		});
 	}, []);
