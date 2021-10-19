@@ -1,9 +1,8 @@
-import React from 'react'
 
 const Results = () => {
     return (
         <div>
-            
+            Placeholder for results
         </div>
     )
 }

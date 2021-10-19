@@ -1,12 +1,14 @@
-import Upload from './components/upload/Upload';
+import { BrowserRouter as Router } from 'react-router-dom';
+import './assets/css/index.css';
+import Routes from './Routes';
 
 function App() {
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<Upload />
-			</header>
-		</div>
+		<Router>
+			<div className='app'>
+				<Routes />
+			</div>
+		</Router>
 	);
 }
 
