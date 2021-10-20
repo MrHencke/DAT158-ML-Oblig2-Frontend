@@ -43,7 +43,7 @@ const Upload = () => {
 		form.append('file', file);
 
 		API.post('/ml', form, config).then((res) => {
-			history.push({ pathname: '/results', state: { response: res.data, original: file } });
+			history.push({ pathname: '/results', state: [res.data, file] });
 		});
 	};
 
