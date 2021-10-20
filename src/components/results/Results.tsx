@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 
 const Results = () => {
 	const { state }: any = useLocation();
+	console.log(state);
 	return (
 		<div>
 			<p>Placeholder for results</p>
@@ -10,11 +11,7 @@ const Results = () => {
 			) : (
 				<>
 					<p>Current state contains:</p>
-					<ul>
-						{state.map((s: any) => {
-							return <li> {`${s}`} </li>;
-						})}
-					</ul>
+					{state}
 				</>
 			)}
 		</div>
@@ -22,3 +19,10 @@ const Results = () => {
 };
 
 export default Results;
+/*
+					<ul>
+						{state.map((s: any) => {
+							return <li> {`${s}`} </li>;
+						})}
+					</ul>
+*/
