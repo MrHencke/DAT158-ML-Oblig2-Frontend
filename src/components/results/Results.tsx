@@ -24,10 +24,7 @@ const Results = () => {
 
 export default Results;
 
-interface state {
-	response: any;
-	original: File;
-}
+
 /*
 					<ul>
 						{state.map((s: any) => {
