@@ -1,4 +1,5 @@
-//import { ResponsiveBar } from '@nivo/bar';
+import { Bar, BarChart, BarLabel, BarSeries } from 'reaviz';
+
 const HasResults = ({ state }: any) => {
 	let parsedResponse = JSON.parse(state[0]);
 	console.log(parsedResponse);
@@ -20,6 +21,22 @@ const HasResults = ({ state }: any) => {
 				/>
 				<p>We think your picture is of a:</p>
 				{parsedResponse.top_prediction}
+
+				<p>Here is how certain we are of the result</p>
+				<br />
+
+				<div style={{ height: '17rem', width: '50vw' }}>
+					<BarChart
+						data={parsedResponse.certainties}
+						series={
+							<BarSeries
+								bar={<Bar label={<BarLabel position={'top'} fill='white' />} />}
+							/>
+						}
+					/>
+				</div>
+				<br />
+				<br />
 			</>
 		</div>
 	);
