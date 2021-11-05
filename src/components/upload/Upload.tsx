@@ -8,8 +8,10 @@ import { useHistory } from 'react-router-dom';
 const Upload = () => {
 	const history = useHistory();
 	const [file, setFile] = useState<any>();
+	const [error, setError] = useState<Boolean>();
 	const [backendStatus, setBackendStatus] = useState<Boolean>(false);
 	const [message, setMessage] = useState<String>('Waiting for ML service to start');
+	const allowedFileFormats = ['jpg', 'png', 'jfif'];
 
 	useEffect(() => {
 		API.get('/up').then((res) => {
@@ -23,10 +25,15 @@ const Upload = () => {
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.currentTarget.files) {
-			console.log(e.currentTarget.value);
-			console.log(e.currentTarget);
-			console.log(typeof e.currentTarget.files[0]);
-			setFile(e.currentTarget.files[0]);
+			if (
+				allowedFileFormats.includes(
+					e.currentTarget.files[0].name.split('.').pop()!.toLowerCase()
+				)
+			) {
+				setFile(e.currentTarget.files[0]);
+			} else {
+				setError(true);
+			}
 		}
 	};
 
@@ -48,18 +55,27 @@ const Upload = () => {
 	return (
 		<div>
 			{backendStatus ? (
-				<form className='form' onSubmit={handleSubmit} encType='multipart/form-data'>
-					<input
-						className='form'
-						type='file'
-						name='file'
-						accept='.png, .jpg'
-						onChange={handleChange}
-					/>
-					<div style={{ height: '3rem' }} />
+				<>
+					<form className='form' onSubmit={handleSubmit} encType='multipart/form-data'>
+						<input
+							className='form'
+							type='file'
+							name='file'
+							accept='.png, .jpg'
+							onChange={handleChange}
+						/>
+						<div style={{ height: '3rem' }} />
 
-					<input className='form' type='submit' />
-				</form>
+						<input className='form' type='submit' />
+					</form>
+					{error && (
+						<>
+							<br />
+							<p>Please input a valid file, only PNG and JPEG/JFIF is supported</p>
+							<br />
+						</>
+					)}
+				</>
 			) : (
 				<div className='form'>
 					<Default className='form' />
