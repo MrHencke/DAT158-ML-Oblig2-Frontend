@@ -7,7 +7,7 @@ const HasResults = ({ state }: any) => {
 
 	return (
 		<>
-			<div style={{ width: '50%', float: 'left', marginLeft: '10%', marginRight: '10%' }}>
+			<div style={{ width: '40%', float: 'left', marginLeft: '4%', marginRight: '4%' }}>
 				<h1>Interpretation of original picture</h1>
 				<p>Your original picture:</p>
 				<img src={originalURL} alt='' style={{ height: '17rem', width: '17rem' }} />
@@ -23,7 +23,7 @@ const HasResults = ({ state }: any) => {
 				<p>Here is how certain we are of the result</p>
 				<br />
 
-				<div style={{ height: '17rem', width: '50vw', marginBottom: '20%' }}>
+				<div style={{ height: '17rem', width: '40vw', marginBottom: '20%' }}>
 					<BarChart
 						data={parsedResponse.o_certainties}
 						series={
@@ -35,7 +35,7 @@ const HasResults = ({ state }: any) => {
 				</div>
 			</div>
 
-			<div style={{ width: '50%', float: 'right', marginLeft: '10%', marginRight: '10%' }}>
+			<div style={{ width: '40%', float: 'right', marginLeft: '4%', marginRight: '4%' }}>
 				<h1>Interpretation of flipped picture</h1>
 				<p>Your flipped picture:</p>
 				<img
@@ -55,7 +55,7 @@ const HasResults = ({ state }: any) => {
 				<p>Here is how certain we are of the result</p>
 				<br />
 
-				<div style={{ height: '17rem', width: '50vw', marginBottom: '20%' }}>
+				<div style={{ height: '17rem', width: '40vw', marginBottom: '20%' }}>
 					<BarChart
 						data={parsedResponse.f_certainties}
 						series={
