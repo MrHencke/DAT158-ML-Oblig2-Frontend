@@ -20,7 +20,7 @@ const HasResults = ({ state }: any) => {
 				<p>We think your picture is of a:</p>
 				{parsedResponse.o_top_prediction}
 
-				<p>Here is how certain we are of the result</p>
+				<p>Here is how certain we are of the result:</p>
 				<br />
 
 				<div style={{ height: '17rem', width: '40vw', marginBottom: '20%' }}>
@@ -52,7 +52,7 @@ const HasResults = ({ state }: any) => {
 				<p>We think your picture is of a:</p>
 				{parsedResponse.f_top_prediction}
 
-				<p>Here is how certain we are of the result</p>
+				<p>Here is how certain we are of the result:</p>
 				<br />
 
 				<div style={{ height: '17rem', width: '40vw', marginBottom: '20%' }}>
@@ -65,6 +65,10 @@ const HasResults = ({ state }: any) => {
 						}
 					/>
 				</div>
+			</div>
+			<div style={{ textAlign: 'center' }}>
+				<h1>Keeping all of this in mind</h1>
+				<p>Your picture is most likely a {parsedResponse.top_prediction}</p>
 			</div>
 		</>
 	);

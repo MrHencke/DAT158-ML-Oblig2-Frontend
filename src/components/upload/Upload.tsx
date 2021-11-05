@@ -11,7 +11,7 @@ const Upload = () => {
 	const [error, setError] = useState<Boolean>();
 	const [backendStatus, setBackendStatus] = useState<Boolean>(false);
 	const [message, setMessage] = useState<String>('Waiting for ML service to start');
-	const allowedFileFormats = ['jpg', 'png', 'jfif'];
+	const allowedFileFormats = ['jpg', 'jpeg', 'png', 'jfif'];
 
 	useEffect(() => {
 		API.get('/up').then((res) => {
@@ -61,7 +61,7 @@ const Upload = () => {
 							className='form'
 							type='file'
 							name='file'
-							accept='.png, .jpg'
+							accept='.png, .jpg, .jpeg, .jfif'
 							onChange={handleChange}
 						/>
 						<div style={{ height: '3rem' }} />
