@@ -8,8 +8,6 @@ const HasResults = ({ state }: any) => {
 
 	return (
 		<div>
-			<p>Placeholder for results page</p>
-
 			<>
 				<p>Your original picture:</p>
 				<img src={originalURL} alt='' style={{ height: '17rem', width: '17rem' }} />

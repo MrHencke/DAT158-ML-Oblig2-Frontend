@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { AxiosResponse } from 'axios';
 import API from '../../config/API';
-//import Results from '../results/Results';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Default } from 'react-spinners-css';
 import { useHistory } from 'react-router-dom';
@@ -51,7 +49,13 @@ const Upload = () => {
 		<div>
 			{backendStatus ? (
 				<form className='form' onSubmit={handleSubmit} encType='multipart/form-data'>
-					<input className='form' type='file' name='file' onChange={handleChange} />
+					<input
+						className='form'
+						type='file'
+						name='file'
+						accept='.png, .jpg'
+						onChange={handleChange}
+					/>
 					<div style={{ height: '3rem' }} />
 
 					<input className='form' type='submit' />
