@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import API from '../../config/API';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { Default } from 'react-spinners-css';
 import { useHistory } from 'react-router-dom';
 
@@ -30,8 +30,10 @@ const Upload = () => {
 					e.currentTarget.files[0].name.split('.').pop()!.toLowerCase()
 				)
 			) {
+				setError(false);
 				setFile(e.currentTarget.files[0]);
 			} else {
+				e.currentTarget.files = null;
 				setError(true);
 			}
 		}
@@ -39,17 +41,19 @@ const Upload = () => {
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
-		const config = {
-			headers: {
-				'content-type': 'multipart/form-data',
-			},
-		};
-		let form = new FormData();
-		form.append('file', file);
+		if (file) {
+			const config = {
+				headers: {
+					'content-type': 'multipart/form-data',
+				},
+			};
+			let form = new FormData();
+			form.append('file', file);
 
-		API.post('/ml', form, config).then((res) => {
-			history.push({ pathname: '/results', state: [JSON.stringify(res.data), file] });
-		});
+			API.post('/ml', form, config).then((res) => {
+				history.push({ pathname: '/results', state: [JSON.stringify(res.data), file] });
+			});
+		}
 	};
 
 	return (
