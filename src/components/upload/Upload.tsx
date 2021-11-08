@@ -51,7 +51,11 @@ const Upload = () => {
 			form.append('file', file);
 
 			API.post('/ml', form, config).then((res) => {
-				history.push({ pathname: '/results', state: [JSON.stringify(res.data), file] });
+				if (res.status === 400) {
+					setError(true);
+				} else {
+					history.push({ pathname: '/results', state: [JSON.stringify(res.data), file] });
+				}
 			});
 		}
 	};
