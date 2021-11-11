@@ -102,7 +102,7 @@ const HasResults = ({ state }: any) => {
 						style={{ height: '17rem', width: '17rem' }}
 					/>
 					<p>We think your picture is of a:</p>
-					{parsedResponse.o_top_prediction}
+					{parsedResponse.top_prediction}
 
 					<p>Here is how certain we are of the result:</p>
 					<br />
