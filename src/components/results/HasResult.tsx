@@ -92,7 +92,7 @@ const HasResults = ({ state }: any) => {
 				</>
 			) : (
 				<div style={{ width: '80vw' }}>
-					<h1>Interpretation of original picture</h1>
+					<h1>Interpretation of picture</h1>
 					<p>Your original picture:</p>
 					<img src={originalURL} alt='' style={{ height: '17rem', width: '17rem' }} />
 					<p>This is what our model sees:</p>
