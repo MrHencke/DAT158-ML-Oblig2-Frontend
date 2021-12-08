@@ -12,6 +12,16 @@
 
 A repo for the frontend of the second obligatory assignment in DAT158.
 
+For testing the deployment of this machine learning model, visit our live demo at:
+<a href="https://dat158.netlify.app/"> Live Demo </a>
+
+The other repos for this project are available at:
+
+<ul>
+<li><a href="https://github.com/MrHencke/DAT158-ML-Oblig2-ML/">Machine Learning (Jupyter)</a></li>
+<li><a href="https://github.com/MrHencke/DAT158-ML-Oblig2-Backend/">Flask Backend</a></li>
+</ul>
+
 <p align="center">
 Made by Gruppe 10
 </p>
